@@ -4,12 +4,12 @@ ARG STKEY_SERVER_BY
 
 FROM node:latest
 
-RUN npm install -g pm2
+RUN npm install -g pm2 yarn
 RUN mkdir /app
 WORKDIR /app
 
-ADD package*.json ./
-RUN npm install
+ADD yarn.lock ./
+RUN yarn
 ADD . ./
 
 EXPOSE 80
