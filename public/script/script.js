@@ -3,6 +3,7 @@
 
     let ws;
     let redeemRecordNum = 0;
+    let redeemRecordNumApp = 0;
     let successRecordNum = 0;
 
     let loggedIn = false;
@@ -10,15 +11,13 @@
     let inputStatus;
 
     const AutoDivideThreshold = 9;
+    const AutoDivideThresholdSub = 50;
     const RedeemTimeoutSeconds = 15;
     const AutoDivideWaitSeconds = 20;
     //const KeepAliveWaitSeconds = 20;
     const PingIntervalSeconds = 30;
 
     function init() {
-        $('#modal-donate').find('[aria-label="Close"]').click(() => {
-            $('#modal-donate').removeClass('active');
-        });
         $('#modal-keys').find('[aria-label="Close"]').click(() => {
             $('#modal-keys').removeClass('active');
         });
@@ -34,8 +33,8 @@
             doLoginSteam();
         });
 
-        $('textarea').on('input', () => {
-            let keys = searchKeyByRegExp($('textarea').val());
+        $('#keys').on('input', () => {
+            let keys = searchKeyByRegExp($('#keys').val());
             $('#button-redeem').attr('data-badge', keys.length);
             if (keys.length > 0) {
                 elementEnable('#button-redeem');
@@ -46,7 +45,31 @@
             }
         });
 
+		$('#appids').on('input', () => {
+			let appids = searchAppId($('#appids').val());
+			$('#button-addlicense').attr('data-badge', appids.length);
+			if (appids.length > 0) {
+				elementEnable('#button-addlicense');
+				inputStatus = InputStatus.APPID_INPUT;
+			} else {
+				elementDisable('#button-addlicense');
+				inputStatus = InputStatus.NONE_INPUT;
+			}
+		});
+
+		$('#select-redeem').click(() => {
+            elementOut('#form-addlicense');
+			elementIn('#form-redeem');
+		});
+
+		$('#select-addlicense').click(() => {
+			elementOut('#form-redeem');
+			elementIn('#form-addlicense');
+		});
+
         $('#button-redeem').click(() => redeemKeys());
+
+		$('#button-addlicense').click(() => addLicenses());
 
         $('#button-authcode').click(() => {
             submitAuthCode();
@@ -73,6 +96,7 @@
             setServerStatus(ServerStatus.DISCONNECTED);
             elementDisable('#button-login');
             elementDisable('#button-redeem');
+			elementDisable('#button-addlicense');
             inputStatus = InputStatus.NONE_INPUT;
         };
     }
@@ -96,6 +120,9 @@
             case 'redeem':
                 receiveRedeemResult(data);
                 break;
+			case 'addlicense':
+				receiveAddLicenseResult(data);
+				break;
             default:
                 break;
         }
@@ -161,7 +188,8 @@
             $('#userinfo-location').text(data.detail.country);
             $('#toast-info-wrapper').fadeOut();
             elementOut('#form-login');
-            elementIn('#form-redeem');
+            elementIn('#form-select');
+			elementIn('#form-redeem');
             inputStatus = InputStatus.KEY_INPUT;
         } else if (data.result === 'failed') {
             let errMsg = ErrorTexts[data.message] || data.message;
@@ -189,6 +217,28 @@
         }
     }
 
+	function receiveAddLicenseResult(data) {
+		for (let i in data.detail.appids) {
+			let appid = data.detail.appids[i];
+			let rowObjects = $('#addlicense-records tr');
+			for (let j = rowObjects.length - 1; j >= 1; j--) {
+				let row = $(rowObjects[j]);
+				if (row.children()[1].innerHTML.includes(appid) && row.children()[2].innerHTML.includes(RedeemStatus.ADDING)) {
+					row.children()[2].innerHTML = RedeemResults.OK;
+					row.children()[3].innerHTML = data.detail.packages[i];
+					break;
+				}
+			}
+			for (let j = rowObjects.length - 1; j >= 1; j--) {
+				let row = $(rowObjects[j]);
+				if (row.children()[2].innerHTML.includes(RedeemStatus.ADDING)) {
+					row.children()[2].innerHTML = RedeemResults.Fail;
+				}
+			}
+			break;
+		}
+	}
+
     function updateUnusedKeys(key, result, detail, subId, subName) {
         let success = result === RedeemResults.OK;
         if (success && unusedKeys.includes(key)) {
@@ -210,7 +260,7 @@
     }
 
     function redeemKeys() {
-        let keys = searchKeyByRegExp($('textarea').val());
+        let keys = searchKeyByRegExp($('#keys').val());
         if (keys.length <= 0) {
             return;
         }
@@ -231,7 +281,7 @@
             }
         });
 
-        $('textarea').val('');
+        $('#keys').val('');
         $('#button-redeem').attr('data-badge', 0);
         scrollToId('redeem-records');
 
@@ -240,6 +290,33 @@
             startRedeemTimer();
         }
     }
+
+	function addLicenses() {
+		let appids = searchAppId($('#appids').val());
+		if (appids.length <= 0) {
+			return;
+		}
+		elementDisable('#button-addlicense');
+		elementIn('#addlicense-records');
+		inputStatus = InputStatus.NONE_INPUT;
+
+		let appNum = 0;
+		let appsToAdd = [];
+
+		appids.forEach(appid => {
+			appNum++;
+			if (appNum <= AutoDivideThresholdSub) {
+				insertTableApp(appid, RedeemStatus.ADDING);
+				appsToAdd.push(appid);
+			}
+		});
+
+		$('#appids').val('');
+		$('#button-addlicense').attr('data-badge', 0);
+		scrollToId('addlicense-records');
+
+		tryAddLicenses(appsToAdd);
+	}
 
     function insertTable(key, status) {
         let num = ++redeemRecordNum;
@@ -255,11 +332,28 @@
         // sub info
         row.append(`<td></td>`);
 
-        $('tbody').prepend(row);
+        $('#redeem-records tbody').prepend(row);
 
         if (status === RedeemStatus.REDEEMING) {
             countRedeemTimeout(id);
         }
+    }
+
+	function insertTableApp(key, status) {
+        let num = ++redeemRecordNumApp;
+        let id = `record-key-${num}`;
+        let row = $(`<tr id="${id}"></tr>`);
+
+        // row number
+        row.append(`<td>${num}</td>`);
+        // steam key
+        row.append(`<td><span class="text-error">${key}</span></td>`);
+        // status
+        row.append(`<td>${status}</td>`);
+        // sub info
+        row.append(`<td></td>`);
+
+        $('#addlicense-records tbody').prepend(row);
     }
 
     function tryRedeemKeys(keysToRedeem) {
@@ -268,6 +362,13 @@
             keys: keysToRedeem
         });
     }
+
+	function tryAddLicenses(appsToAdd) {
+		wsSend({
+			action: 'addlicense',
+			appids: appsToAdd
+		})
+	}
 
     function countRedeemTimeout(id) {
         setTimeout(() => {
@@ -372,6 +473,17 @@
         return keys;
     }
 
+	function searchAppId(text) {
+		let appids = [];
+		text.split("\n").forEach((line) => {
+			line = parseInt(line);
+			if (line) {
+				appids.push(line);
+			}
+		});
+		return appids;
+	}
+
     function checkWebSocket() {
         return 'WebSocket' in window;
     }
@@ -430,12 +542,14 @@
         LOGIN_INPUT: 'login',
         AUTH_INPUT: 'auth',
         KEY_INPUT: 'key',
+		APPID_INPUT: 'appid',
         NONE_INPUT: 'none',
     };
 
     const RedeemStatus = {
         WAITING: '<span class="label label-warning">等待中</span>',
         REDEEMING: '<span class="label label-primary">激活中</span>',
+        ADDING: '<span class="label label-primary">添加中</span>',
         OK: '<span class="label label-success">成功</span>',
         FAILED: '<span class="label label-error">失败</span>',
         TIMEOUT: '<span class="label secondary">超时</span>',
@@ -498,7 +612,9 @@
                 $('#button-authcode').click();
             } else if (inputStatus === InputStatus.KEY_INPUT) {
                 $('#button-redeem').click();
-            }
+            } else if (inputStatus === InputStatus.APPID_INPUT) {
+				$('#button-addlicense').click();
+			}
         }
     });
 

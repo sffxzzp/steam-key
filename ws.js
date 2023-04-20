@@ -40,6 +40,9 @@ function dispatchMessage(ws, steam, message) {
         case 'redeem':
             doRedeem(ws, steam, data);
             break;
+		case 'addlicense':
+			doAddLicense(ws, steam, data);
+			break;
         default:
             return;
     }
@@ -98,6 +101,14 @@ function doRedeem(ws, steam, data) {
     });
 }
 
+function doAddLicense(ws, steam, data) {
+	runSafely(ws, 'addlicense', async () => {
+		addLicenses(steam, data).then(res => {
+			wsSend(ws, res);
+		});
+	});
+}
+
 function redeemKey(steam, key) {
     return new Promise(resolve => {
         steam.redeemKey(key, (result, detail, packages) => {
@@ -112,6 +123,21 @@ function redeemKey(steam, key) {
             });
         });
     })
+}
+
+function addLicenses(steam, data) {
+	return new Promise(resolve => {
+		steam.requestFreeLicense(data.appids, (err, grantedPackageIds, grantedAppIds) => {
+			resolve({
+				action: 'addlicense',
+				detail: {
+					err: err,
+					appids: grantedAppIds,
+					packages: grantedPackageIds,
+				}
+			})
+		})
+	});
 }
 
 function wsSendError(ws, action, message) {
