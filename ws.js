@@ -112,6 +112,11 @@ function doAddLicense(ws, steam, data) {
 function redeemKey(steam, key) {
     return new Promise(resolve => {
         steam.redeemKey(key, (result, detail, packages) => {
+            if (result != null) {
+                packages = result.packageList;
+                detail = result.purchaseResultDetails;
+                result = result.eresult;
+            }
             resolve({
                 action: 'redeem',
                 detail: {

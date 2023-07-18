@@ -1,4 +1,4 @@
-const request = require('request');
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 const xml = require('xml2js').parseString;
 
 module.exports = (steamId, callback) => {
@@ -29,14 +29,15 @@ async function start(url) {
 }
 
 function getXml(url) {
-    return new Promise((resolve, reject) => {
-        request(url, (error, response, body) => {
-            if (!error && response.statusCode === 200) {
-                resolve(body);
-            } else {
-                reject("Cannot get the xml");
+    return new Promise(async (resolve, reject) => {
+        try {
+            const response = await fetch(url);
+            if (response.ok) {
+                resolve(response.body);
             }
-        });
+        } catch (error) {
+            reject("Cannot get the xml");
+        }
     });
 }
 

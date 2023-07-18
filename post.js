@@ -1,42 +1,41 @@
-const request = require('request');
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
 module.exports = (postAddress, subId, subName, serverId) => {
     let options = {
-        uri: postAddress,
         method: 'POST',
-        timeout: 20000,
-        json: {
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
             subId: subId,
             subName: subName,
-            server: serverId
-        }
+            server: serverId,
+        }),
     };
-
-    start(options);
+    start(postAddress, options);
 };
 
 
-async function start(options) {
+async function start(url, options) {
     try {
-        for (let i = 1; i <= 3; i++) {
-            let res = await doPost(options);
+        for (let i = 0; i < 3; i++) {
+            let res = await doPost(url, options);
             if (res === 'OK') {
                 break;
             }
         }
     } catch (error) {
-        //console.log(error);
+        // console.log(error);
     }
 }
 
-function doPost(options) {
-    return new Promise((resolve, reject) => {
-        request(options, (error, response, body) => {
-            if (!error) {
-                resolve(body);
-            } else {
-                reject(error);
+function doPost(url, options) {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const response = await fetch(url, options);
+            if (response.ok) {
+                resolve(response.body);
             }
-        });
+        } catch (error) {
+            reject(error);
+        }
     });
 }
