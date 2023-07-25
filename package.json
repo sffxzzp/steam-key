@@ -17,7 +17,7 @@
     "hbs": "^4.2.0",
     "node-fetch": "^3.3.1",
     "path": "^0.12.7",
-    "steam-user": "git+https://github.com/DoctorMcKay/node-steam-user.git",
+    "steam-user": "github:DoctorMcKay/node-steam-user",
     "ws": "^8.13.0",
     "xml2js": "^0.6.0"
   }
