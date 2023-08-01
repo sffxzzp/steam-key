@@ -196,20 +196,6 @@ data-uri-to-buffer@^4.0.0:
   resolved "https://registry.npmjs.org/data-uri-to-buffer/-/data-uri-to-buffer-4.0.1.tgz"
   integrity sha512-0R9ikRb668HB7QDxT1vkpuUBtqc53YyAwMwGeUFKRojY/NWKvdZ+9UYtRfGmhqNbRkTSVpMbmyhXipFFv2cb/A==
 
-debug@^4.3.3:
-  version "4.3.4"
-  resolved "https://registry.npmjs.org/debug/-/debug-4.3.4.tgz"
-  integrity sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==
-  dependencies:
-    ms "2.1.2"
-
-debug@^4.3.4:
-  version "4.3.4"
-  resolved "https://registry.npmjs.org/debug/-/debug-4.3.4.tgz"
-  integrity sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==
-  dependencies:
-    ms "2.1.2"
-
 debug@2.6.9:
   version "2.6.9"
   resolved "https://registry.npmjs.org/debug/-/debug-2.6.9.tgz"
@@ -217,7 +203,7 @@ debug@2.6.9:
   dependencies:
     ms "2.0.0"
 
-debug@4:
+debug@4, debug@^4.3.3, debug@^4.3.4:
   version "4.3.4"
   resolved "https://registry.npmjs.org/debug/-/debug-4.3.4.tgz"
   integrity sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==
@@ -436,7 +422,7 @@ kvparser@^1.0.1:
   resolved "https://registry.npmjs.org/kvparser/-/kvparser-1.0.2.tgz"
   integrity sha512-5P/5qpTAHjVYWqcI55B3yQwSY2FUrYYrJj5i65V1Wmg7/4W4OnBcaodaEvLyVuugeOnS+BAaKm9LbPazGJcRyA==
 
-long@^3.2.0:
+long@^3.2.0, long@~3:
   version "3.2.0"
   resolved "https://registry.npmjs.org/long/-/long-3.2.0.tgz"
 
@@ -449,11 +435,6 @@ long@^5.0.0:
   version "5.2.3"
   resolved "https://registry.npmjs.org/long/-/long-5.2.3.tgz"
   integrity sha512-lcHwpNoggQTObv5apGNCTdJrO69eHOZMi4BNC+rTLER8iHAqGrUVeLh/irVIM7zTw2bOXA8T6uNPeujwOLg/2Q==
-
-long@~3:
-  version "3.2.0"
-  resolved "https://registry.npmjs.org/long/-/long-3.2.0.tgz"
-  integrity sha512-ZYvPPOMqUwPoDsbJaR10iQJYnMuZhRTvHYl62ErLIEX7RgFlziSBUUvrt3OVfc47QlHHpzPZYP17g3Fv7oeJkg==
 
 lzma@^2.3.2:
   version "2.3.2"
@@ -756,10 +737,10 @@ steam-appticket@^1.0.1:
     protobufjs "^6.8.8"
     steamid "^1.1.0"
 
-steam-session@^1.1.0:
-  version "1.2.4"
-  resolved "https://registry.npmjs.org/steam-session/-/steam-session-1.2.4.tgz"
-  integrity sha512-jmpGAygK6dGy/53QotsaBiw6aGCS+9KiM1XxTZ/J/7H1T4+jhszysW22dWeZ8QjEnSec7BsrDvpWEgBzTsqQkw==
+steam-session@^1.2.5:
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/steam-session/-/steam-session-1.2.5.tgz#14d0e32968676c7ea60c2344563418dadb0e0b29"
+  integrity sha512-GeIvyH9jmgMBmIBXmPpdJRLyR3o4gKa98vwxzDW5A7WrDLAF60O38mQ/MV4EhaRUmZS1HMMMTo1cEk+AKEqjjg==
   dependencies:
     "@doctormckay/stdlib" "^2.4.1"
     debug "^4.3.4"
@@ -777,8 +758,9 @@ steam-totp@^2.0.1:
   integrity sha512-bTKlc/NoIUQId+my+O556s55DDsNNXfVIPWFDNVu68beql7AJhV0c+GTjFxfwCDYfdc4NkAme+0WrDdnY2D2VA==
 
 "steam-user@github:DoctorMcKay/node-steam-user":
-  version "4.28.9"
-  resolved "git+ssh://git@github.com/DoctorMcKay/node-steam-user.git#a8c0dd16304fea728851f840a58c14c04595c1ef"
+  version "4.29.1"
+  uid f446f528e51b50658c0b01e82acbbf8344033ae1
+  resolved "https://codeload.github.com/DoctorMcKay/node-steam-user/tar.gz/f446f528e51b50658c0b01e82acbbf8344033ae1"
   dependencies:
     "@bbob/parser" "^2.2.0"
     "@doctormckay/stdlib" "^1.16.0"
@@ -792,7 +774,7 @@ steam-totp@^2.0.1:
     protobufjs "^6.11.3"
     socks-proxy-agent "^7.0.0"
     steam-appticket "^1.0.1"
-    steam-session "^1.1.0"
+    steam-session "^1.2.5"
     steam-totp "^2.0.1"
     steamid "^1.1.0"
     websocket13 "^3.0.1"
@@ -832,7 +814,7 @@ uglify-js@^3.1.4:
   resolved "https://registry.npmjs.org/uglify-js/-/uglify-js-3.17.4.tgz"
   integrity sha512-T9q82TJI9e/C1TAxYvfb16xO120tMVFZrGA3f9/P4424DNu6ypK103y0GPFVa17yotwSyZW5iYXgjYHkGrJW/g==
 
-unpipe@~1.0.0, unpipe@1.0.0:
+unpipe@1.0.0, unpipe@~1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/unpipe/-/unpipe-1.0.0.tgz"
   integrity sha512-pjy2bYhSsufwWlKwPc+l3cN7+wuJlK6uz0YdJEOlQDbl6jo/YlPi4mb8agUkVC8BF7V8NuzeyPNqRksA3hztKQ==
