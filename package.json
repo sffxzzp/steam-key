@@ -19,6 +19,6 @@
     "path": "^0.12.7",
     "steam-user": "github:DoctorMcKay/node-steam-user",
     "ws": "^8.13.0",
-    "xml2js": "^0.6.0"
+    "xml2js": "^0.6.2"
   }
 }
