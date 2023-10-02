@@ -19,10 +19,10 @@
   resolved "https://registry.npmjs.org/@doctormckay/stdlib/-/stdlib-1.16.0.tgz"
   integrity sha512-mObNOnuEgEb+hZKkd6mY2PoB+9gLfuYkmv8ggN/R3JFjaRIWDOR1QlBV3psQZs7TqGpe3ZFB6bgddQGE02psOA==
 
-"@doctormckay/stdlib@^2.4.1", "@doctormckay/stdlib@^2.7.1":
-  version "2.7.1"
-  resolved "https://registry.yarnpkg.com/@doctormckay/stdlib/-/stdlib-2.7.1.tgz#4fb669872be97d023bc7f2e243028c856ef659ca"
-  integrity sha512-nIs+3jdaL0dtaMEzd6abkOjR7aJTDbusv/kNcxiBk8DKpnWwlhso2EH1C4a+EJwmXozGm/P3XvWtv+f3XNvrEA==
+"@doctormckay/stdlib@^2.4.1", "@doctormckay/stdlib@^2.7.1", "@doctormckay/stdlib@^2.8.1":
+  version "2.8.1"
+  resolved "https://registry.yarnpkg.com/@doctormckay/stdlib/-/stdlib-2.8.1.tgz#8df76c9f906b77ccc1b0d45280bbd53f2153bf1a"
+  integrity sha512-QgUfglKSOECKLnWXhqLvcNB0NTozBRcep8I9514mesEexZ/M6zwN5AvBXsXnDknwY/cme4nvAyGfaSO5P/UGXg==
   dependencies:
     psl "^1.9.0"
 
@@ -759,11 +759,11 @@ steam-totp@^2.0.1:
 
 "steam-user@github:DoctorMcKay/node-steam-user":
   version "5.0.1"
-  uid "5e01a94ee9b925cec03107413ee6db8217f80970"
-  resolved "https://codeload.github.com/DoctorMcKay/node-steam-user/tar.gz/5e01a94ee9b925cec03107413ee6db8217f80970"
+  uid a91cede516f73a2aa49e02dd5e96f530f99e2468
+  resolved "https://codeload.github.com/DoctorMcKay/node-steam-user/tar.gz/a91cede516f73a2aa49e02dd5e96f530f99e2468"
   dependencies:
     "@bbob/parser" "^2.2.0"
-    "@doctormckay/stdlib" "^2.7.1"
+    "@doctormckay/stdlib" "^2.8.1"
     "@doctormckay/steam-crypto" "^1.2.0"
     adm-zip "^0.5.10"
     binarykvparser "^2.2.0"
