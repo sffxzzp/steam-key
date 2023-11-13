@@ -765,8 +765,8 @@ steam-totp@^2.0.1:
 
 "steam-user@github:DoctorMcKay/node-steam-user":
   version "5.0.4"
-  uid "2fb1e310cf539c49b6c7ddbf851b882a03578aee"
-  resolved "https://codeload.github.com/DoctorMcKay/node-steam-user/tar.gz/2fb1e310cf539c49b6c7ddbf851b882a03578aee"
+  uid a9e1d2be73760f881f214bd7dffc74fbc7311cc7
+  resolved "https://codeload.github.com/DoctorMcKay/node-steam-user/tar.gz/a9e1d2be73760f881f214bd7dffc74fbc7311cc7"
   dependencies:
     "@bbob/parser" "^2.2.0"
     "@doctormckay/stdlib" "^2.9.1"
