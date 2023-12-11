@@ -18,7 +18,7 @@
     "node-fetch": "^3.3.2",
     "path": "^0.12.7",
     "steam-user": "github:DoctorMcKay/node-steam-user",
-    "ws": "^8.14.2",
+    "ws": "^8.15.0",
     "xml2js": "^0.6.2"
   }
 }
