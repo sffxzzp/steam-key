@@ -764,9 +764,9 @@ steam-totp@^2.0.1:
   integrity sha512-bTKlc/NoIUQId+my+O556s55DDsNNXfVIPWFDNVu68beql7AJhV0c+GTjFxfwCDYfdc4NkAme+0WrDdnY2D2VA==
 
 "steam-user@github:DoctorMcKay/node-steam-user":
-  version "5.0.7"
-  uid "525697d9e7568b61c60cafc443bfe337ed1146cc"
-  resolved "https://codeload.github.com/DoctorMcKay/node-steam-user/tar.gz/525697d9e7568b61c60cafc443bfe337ed1146cc"
+  version "5.0.8"
+  uid d24569d6041b63e1fc36a1ab21a4becd2cec2b48
+  resolved "https://codeload.github.com/DoctorMcKay/node-steam-user/tar.gz/d24569d6041b63e1fc36a1ab21a4becd2cec2b48"
   dependencies:
     "@bbob/parser" "^2.2.0"
     "@doctormckay/stdlib" "^2.9.1"
