@@ -13,7 +13,7 @@
   "author": "Makazeu",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.18.3",
+    "express": "^4.19.2",
     "hbs": "^4.2.0",
     "node-fetch": "^3.3.2",
     "path": "^0.12.7",
