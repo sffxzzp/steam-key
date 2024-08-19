@@ -832,7 +832,8 @@ steam-totp@^2.0.1:
 
 "steam-user@github:DoctorMcKay/node-steam-user":
   version "5.0.10"
-  resolved "git+ssh://git@github.com/DoctorMcKay/node-steam-user.git#43961663cc681795f3b22105a0c4ba97518bbb27"
+  uid "705a6104f2498fd2df284cefac3b52adcd744868"
+  resolved "https://codeload.github.com/DoctorMcKay/node-steam-user/tar.gz/705a6104f2498fd2df284cefac3b52adcd744868"
   dependencies:
     "@bbob/parser" "^2.2.0"
     "@doctormckay/stdlib" "^2.9.1"
