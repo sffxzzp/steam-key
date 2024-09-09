@@ -809,10 +809,10 @@ steam-appticket@^1.0.1:
     protobufjs "^6.8.8"
     steamid "^1.1.0"
 
-steam-session@^1.7.0:
-  version "1.7.2"
-  resolved "https://registry.npmjs.org/steam-session/-/steam-session-1.7.2.tgz"
-  integrity sha512-BfOhwKqrzuiX9xeZ0X9IUhd3cwsZYzfGSkk51Oah7FM7JqDCDlcMrdv/1Q+YT7pBWpPCnnrncVkxiZ5mrRToCg==
+steam-session@^1.8.0:
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/steam-session/-/steam-session-1.9.0.tgz#a0c511dfbdad0ca8225cd809130504cbfed15e59"
+  integrity sha512-CsCxy2ln70/LrRcho8nbixTLT2RMswqt/kzUualZYeT7DkTUF7nni8G/f1tBdT6ce2lKzl4Hq5xJlQ8C6rxg9A==
   dependencies:
     "@doctormckay/stdlib" "^2.9.0"
     "@doctormckay/user-agents" "^1.0.0"
@@ -831,9 +831,9 @@ steam-totp@^2.0.1:
   integrity sha512-bTKlc/NoIUQId+my+O556s55DDsNNXfVIPWFDNVu68beql7AJhV0c+GTjFxfwCDYfdc4NkAme+0WrDdnY2D2VA==
 
 "steam-user@github:DoctorMcKay/node-steam-user":
-  version "5.0.10"
-  uid "705a6104f2498fd2df284cefac3b52adcd744868"
-  resolved "https://codeload.github.com/DoctorMcKay/node-steam-user/tar.gz/705a6104f2498fd2df284cefac3b52adcd744868"
+  version "5.2.0"
+  uid "686d773f88df373ed0e7be845a37c46dd081d9b1"
+  resolved "https://codeload.github.com/DoctorMcKay/node-steam-user/tar.gz/686d773f88df373ed0e7be845a37c46dd081d9b1"
   dependencies:
     "@bbob/parser" "^2.2.0"
     "@doctormckay/stdlib" "^2.9.1"
@@ -847,7 +847,7 @@ steam-totp@^2.0.1:
     protobufjs "^7.2.4"
     socks-proxy-agent "^7.0.0"
     steam-appticket "^1.0.1"
-    steam-session "^1.7.0"
+    steam-session "^1.8.0"
     steam-totp "^2.0.1"
     steamid "^2.0.0"
     websocket13 "^4.0.0"
