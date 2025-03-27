@@ -16,5 +16,5 @@ docker pull ghcr.io/sffxzzp/steam-key:latest
 运行示例：
 
 ```
-docker run -it --name steamkey -p 80:80 -e STKEY_ID=1 -e STKEY_NAME=US -e STKEY_SERVER_BY=abc --rm sffxzzp/steamkey:latest
+docker run -it --name steamkey -p 80:80 -e STKEY_ID=1 -e STKEY_NAME=US -e STKEY_SERVER_BY=abc --rm sffxzzp/steam-key:latest
 ```
