@@ -1,6 +1,7 @@
 {
   "name": "steam-key",
   "version": "2.1.0",
+  "type": "commonjs",
   "description": "Steam key remote redeeming",
   "main": "server.js",
   "scripts": {
