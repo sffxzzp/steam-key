@@ -14,7 +14,7 @@
   "author": "Makazeu",
   "license": "MIT",
   "dependencies": {
-    "express": "^5.2.0",
+    "express": "^5.2.1",
     "hbs": "^4.2.0",
     "node-fetch": "^3.3.2",
     "path": "^0.12.7",
