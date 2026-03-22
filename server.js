@@ -20,6 +20,6 @@ let web = require('./web')(app);
 /* WebSocket Server */
 let ws = require('./ws')(server);
 
-server.listen(80, () => {
+server.listen(process.env.PORT || 80, () => {
     console.log('Listening on %d', server.address().port);
 });
