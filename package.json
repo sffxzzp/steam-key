@@ -21,5 +21,8 @@
     "steam-user": "github:DoctorMcKay/node-steam-user",
     "ws": "^8.20.0",
     "xml2js": "^0.6.2"
+  },
+  "overrides": {
+    "handlebars": "^4.7.9"
   }
 }
