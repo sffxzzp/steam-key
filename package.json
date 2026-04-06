@@ -15,7 +15,7 @@
   "license": "MIT",
   "dependencies": {
     "express": "^5.2.1",
-    "hbs": "^4.2.0",
+    "hbs": "^4.2.1",
     "node-fetch": "^3.3.2",
     "path": "^0.12.7",
     "steam-user": "github:DoctorMcKay/node-steam-user",
