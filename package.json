@@ -23,6 +23,7 @@
     "xml2js": "^0.6.2"
   },
   "overrides": {
-    "handlebars": "^4.7.9"
+    "handlebars": "^4.7.9",
+    "protobufjs": "^7.6.3"
   }
 }
