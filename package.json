@@ -9,18 +9,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/zyfworks/steam-key.git"
+    "url": "https://github.com/sffxzzp/steam-key.git"
   },
-  "author": "Makazeu",
+  "author": "Makazeu, sffxzzp",
   "license": "MIT",
   "dependencies": {
     "express": "^5.3.0",
     "hbs": "^4.4.0",
     "node-fetch": "^3.3.2",
     "path": "^0.12.7",
-    "steam-user": "github:DoctorMcKay/node-steam-user",
+    "steam-user": "https://github.com/DoctorMcKay/node-steam-user",
     "ws": "^8.22.1",
-    "xml2js": "^0.6.2"
+    "xml2js": "^0.6.2",
+    "yarn": "^1.22.22"
   },
   "overrides": {
     "handlebars": "^4.7.10",
@@ -31,5 +32,9 @@
     "handlebars": "^4.7.10",
     "protobufjs": "^7.6.6",
     "adm-zip": "^0.6.1"
+  },
+  "allowScripts": {
+    "protobufjs@7.6.6": true,
+    "yarn@1.22.22": true
   }
 }
